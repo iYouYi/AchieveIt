@@ -8,5 +8,6 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TextBlock Text="Hello"></TextBlock>
+        <TextBlock Text="YouYi"></TextBlock>
     </Grid>
 </Window>
