@@ -33,11 +33,14 @@ namespace AchieveItSystemUI
             string userPassWord = "123";
             if (CurrentUserInfo.UserCode == userCode && CurrentUserInfo.UserPassword == userPassWord)
             {
-                MessageBox.Show("登录成功！");
+                PortalWindow portal = new PortalWindow();
+                (o as Window).Close();
+                portal.Show();
             }
-            PortalWindow portal = new PortalWindow();
-            (o as Window).Close();
-            portal.Show();
+            else
+            {
+                MessageBox.Show("密码错误！");
+            }
         }
 
         public void DoCancel(object o)

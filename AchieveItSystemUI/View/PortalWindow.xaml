@@ -9,7 +9,49 @@
         WindowState="Maximized"
         Height="1080" Width="1920"
         x:Name="Portal">
+
     <Grid>
+        <Grid.Resources>
+            <SolidColorBrush x:Key="TextColor" Color="#333333"/>
+            <Style x:Key="ImageButtonStyle" TargetType="Button">
+                <Setter Property="Width" Value="250"/>
+                <Setter Property="Height" Value="250"/>
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="Background" Value="#F5F5F5"/>
+                <Setter Property="BorderBrush" Value="#E0E0E0"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="8"
+                            Padding="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#E3F2FD"/>
+                                    <Setter Property="BorderBrush" Value="#2196F3"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#BBDEFB"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TargetButtonStyle" TargetType="Button" BasedOn="{StaticResource ImageButtonStyle}">
+                <Setter Property="Width" Value="350"/>
+                <Setter Property="Height" Value="350"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+        </Grid.Resources>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1.5*"/>
@@ -22,57 +64,62 @@
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="8*"/>
             </Grid.ColumnDefinitions>
-                <TextBlock Text="Achieve It" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"></TextBlock>
-            <TextBlock Text="{Binding EverydaySentence}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"></TextBlock>
+            <TextBlock Text="Achieve It" FontSize="50" FontWeight="Bold" Foreground="{StaticResource TextColor}" Margin="0,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"/>
+            <TextBlock Text="{Binding EverydaySentence}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" FontSize="20" Margin="20,0,0,0"/>
         </Grid>
-
 
         <Grid Grid.Row="1">
-            <TextBlock Text="{Binding CurrentDateTime}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="{Binding CurrentDateTime,StringFormat='yyyy年MM月dd日 ddd HH:mm:ss',ConverterCulture='zh-CN'}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid  Grid.Row ="2">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <StackPanel>
-                    <Image Source="/icon/Target.png" Width="64" Height="64"/>
-                    <TextBlock Text="目标" HorizontalAlignment="Center"/>
-                </StackPanel>
+            <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <Button Style="{StaticResource TargetButtonStyle}" Command="{Binding TargetCommand}">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="/AchieveItSystemUI;component/icon/target.png" Width="192" Height="192" Stretch="Uniform"/>
+                        <TextBlock Text="目标" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Button>
             </Grid>
 
             <Grid Grid.Column="1">
-                <UniformGrid Columns="2" Rows="2"  Margin="20">
-                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
-                        <StackPanel>
-                            <Image Source="/icon/AlarmClock.png" Width="64" Height="64"/>
-                            <TextBlock Text="DIY 番茄钟" HorizontalAlignment="Center"/>
+                <UniformGrid Columns="2" Rows="2" Margin="20">
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding TomatoClockCommand}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/AchieveItSystemUI;component/icon/AlarmClock.png" Width="128" Height="128" Stretch="Uniform"/>
+                            <TextBlock Text="DIY 番茄钟" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
                         </StackPanel>
-                    </Border>
-                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
-                        <StackPanel>
-                            <Image Source="/icon/FocusMode.png" Width="64" Height="64"/>
-                            <TextBlock Text="专注模式" HorizontalAlignment="Center"/>
+                    </Button>
+
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding FocusModeCommand}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/AchieveItSystemUI;component/icon/FocusMode.png" Width="128" Height="128" Stretch="Uniform"/>
+                            <TextBlock Text="专注模式" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
                         </StackPanel>
-                    </Border>
-                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
-                        <StackPanel>
-                            <Image Source="/icon/CheckIn.png" Width="64" Height="64"/>
-                            <TextBlock Text="打卡" HorizontalAlignment="Center"/>
+                    </Button>
+
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding CheckInCommand}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/AchieveItSystemUI;component/icon/CheckIn.png" Width="128" Height="128" Stretch="Uniform"/>
+                            <TextBlock Text="打卡" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
                         </StackPanel>
-                    </Border>
-                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
-                        <StackPanel>
-                            <Image Source="/icon/TossCoin.png" Width="64" Height="64"/>
-                            <TextBlock Text="换硬币" HorizontalAlignment="Center"/>
+                    </Button>
+
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding TossCoinCommand}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="/AchieveItSystemUI;component/icon/TossCoin.png" Width="128" Height="128" Stretch="Uniform"/>
+                            <TextBlock Text="换硬币" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
                         </StackPanel>
-                    </Border>
+                    </Button>
                 </UniformGrid>
             </Grid>
         </Grid>
 
+        <Grid Grid.Row="3"/>
     </Grid>
 </Window>

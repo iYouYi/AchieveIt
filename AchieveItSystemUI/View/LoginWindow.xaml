@@ -12,35 +12,111 @@
         WindowStartupLocation="CenterScreen"
         x:Name="MyLoginWindow">
 
-    <Border CornerRadius="15" Background="White" Padding="12">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryColor" Color="#2196F3"/>
+        <SolidColorBrush x:Key="TextColor" Color="#333333"/>
+        <SolidColorBrush x:Key="PlaceholderColor" Color="#9E9E9E"/>
+
+        <!-- 扩展Button的CornerRadius属性 -->
+        <Style x:Key="LoginButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" 
+                                CornerRadius="8">
+                            <!-- 硬编码圆角值 -->
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1976D2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1565C0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LoginTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,0,0,25"/>
+            <Setter Property="Padding" Value="12,0,12,0"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <Border x:Name="Border" BorderThickness="{TemplateBinding BorderThickness}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                    Background="Transparent"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource PrimaryColor}"/>
+                                <Setter TargetName="Border" Property="BorderThickness" Value="0,0,0,2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="15" Background="White" Padding="24">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="12" Color="#99000000" Opacity="0.2" ShadowDepth="0"/>
+        </Border.Effect>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="6*"/> 
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Button Width="20" Height="20" Background="Transparent" BorderBrush="Transparent" 
-                    HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0"
-                    Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=MyLoginWindow}">
-                <TextBlock 
-                FontFamily="{StaticResource SymbolThemeFontFamily}" 
-                Text="&#xE711;" 
-                FontSize="16" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center"/>
+
+            <Button Width="24" Height="24" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Command="{Binding CancelCommand}" CommandParameter="{Binding ElementName=MyLoginWindow}">
+                <TextBlock FontFamily="{StaticResource SymbolThemeFontFamily}" Text="&#xE711;" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Button>
-            <Grid Grid.Row="1">
+
+            <StackPanel Grid.Row="1" Margin="0,20,0,30">
+                <TextBlock Text="Achieve It" FontSize="28" FontWeight="Bold" Foreground="{StaticResource TextColor}" Margin="0,0,0,5"/>
+                <TextBlock Text="登录你的账号" FontSize="14" Foreground="{StaticResource PlaceholderColor}"/>
+            </StackPanel>
+
+            <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Text="{Binding CurrentUserInfo.UserCode}" Grid.ColumnSpan="2" Margin="0,0,0,26" Grid.RowSpan="2"></TextBox>
-                <TextBox Grid.Row="1" Text="{Binding CurrentUserInfo.UserPassword}" Grid.ColumnSpan="2"></TextBox>
+                <TextBox Style="{StaticResource LoginTextBoxStyle}" 
+                         Text="{Binding CurrentUserInfo.UserCode}" 
+                         Grid.Row="0" 
+                         Margin="0,0,0,20"
+                         HorizontalAlignment="Stretch"/>
+                <TextBox Style="{StaticResource LoginTextBoxStyle}" 
+                         Text="{Binding CurrentUserInfo.UserPassword}" 
+                         Grid.Row="1" 
+                         HorizontalAlignment="Stretch"/>
             </Grid>
-            <Grid Grid.Row="3">
-                <Button Content="登录" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=MyLoginWindow}" ></Button>
-            </Grid>
+
+            <Button Style="{StaticResource LoginButtonStyle}" 
+                    Content="登录" 
+                    Grid.Row="3"
+                    Command="{Binding LoginCommand}" 
+                    CommandParameter="{Binding ElementName=MyLoginWindow}"/>
         </Grid>
     </Border>
 </Window>

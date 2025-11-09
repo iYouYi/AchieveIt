@@ -9,13 +9,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="icon\" />
+    <None Remove="icon\AlarmClock.png" />
+    <None Remove="icon\CheckIn.png" />
+    <None Remove="icon\FocusMode.png" />
+    <None Remove="icon\Target.png" />
+    <None Remove="icon\TossCoin.png" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AchieveItSystemBLL\AchieveItSystemBLL.csproj" />
     <ProjectReference Include="..\AchieveItSystemDAL\AchieveItSystemDAL.csproj" />
     <ProjectReference Include="..\AchieveItSystemModels\AchieveItSystemModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icon\AlarmClock.png" />
+    <Resource Include="icon\CheckIn.png" />
+    <Resource Include="icon\FocusMode.png" />
+    <Resource Include="icon\Target.png" />
+    <Resource Include="icon\TossCoin.png" />
   </ItemGroup>
 
 </Project>
