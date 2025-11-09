@@ -1,4 +1,5 @@
 ﻿using AchieveItSystemModels;
+using AchieveItSystemUI.View;
 using System.Security.Policy;
 using System.Windows;
 namespace AchieveItSystemUI
@@ -34,6 +35,9 @@ namespace AchieveItSystemUI
             {
                 MessageBox.Show("登录成功！");
             }
+            PortalWindow portal = new PortalWindow();
+            (o as Window).Close();
+            portal.Show();
         }
 
         public void DoCancel(object o)

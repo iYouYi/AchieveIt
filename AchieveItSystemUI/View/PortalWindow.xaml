@@ -5,17 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AchieveItSystemUI.View"
         mc:Ignorable="d"
-        Title="PortalWindow" Height="1080" Width="1920">
+        Title="PortalWindow" 
+        WindowState="Maximized"
+        Height="1080" Width="1920"
+        x:Name="Portal">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+                <TextBlock Text="Achieve It" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"></TextBlock>
+            <TextBlock Text="{Binding EverydaySentence}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1"></TextBlock>
         </Grid>
-        
+
+
+        <Grid Grid.Row="1">
+            <TextBlock Text="{Binding CurrentDateTime}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        </Grid>
+
+        <Grid  Grid.Row ="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <StackPanel>
+                    <Image Source="/icon/Target.png" Width="64" Height="64"/>
+                    <TextBlock Text="目标" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <UniformGrid Columns="2" Rows="2"  Margin="20">
+                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
+                        <StackPanel>
+                            <Image Source="/icon/AlarmClock.png" Width="64" Height="64"/>
+                            <TextBlock Text="DIY 番茄钟" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
+                        <StackPanel>
+                            <Image Source="/icon/FocusMode.png" Width="64" Height="64"/>
+                            <TextBlock Text="专注模式" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
+                        <StackPanel>
+                            <Image Source="/icon/CheckIn.png" Width="64" Height="64"/>
+                            <TextBlock Text="打卡" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
+                        <StackPanel>
+                            <Image Source="/icon/TossCoin.png" Width="64" Height="64"/>
+                            <TextBlock Text="换硬币" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Window>
