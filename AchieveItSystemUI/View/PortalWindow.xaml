@@ -89,7 +89,7 @@
 
             <Grid Grid.Column="1">
                 <UniformGrid Columns="2" Rows="2" Margin="20">
-                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding TomatoClockCommand}">
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding TomatoClockCommand}" CommandParameter="{Binding ElementName=Portal}">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="/AchieveItSystemUI;component/icon/AlarmClock.png" Width="128" Height="128" Stretch="Uniform"/>
                             <TextBlock Text="DIY 番茄钟" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>

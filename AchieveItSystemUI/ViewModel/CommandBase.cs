@@ -31,5 +31,9 @@ namespace AchieveItSystemUI
         {
             DoCanExecute = func;
         }
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

@@ -1,4 +1,8 @@
 ﻿using AchieveItSystemModels;
+using AchieveItSystemUI.View;
+using System.Diagnostics;
+using System.Security.Policy;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace AchieveItSystemUI
@@ -21,6 +25,7 @@ namespace AchieveItSystemUI
             get { return _currentDateTime; }
             set { _currentDateTime = value; this.RaisePropertyChanged(); }
         }
+        public CommandBase TomatoClockCommand { get; set; }
         public PortalWindowViewModel()
         {
             //时间显示
@@ -34,6 +39,17 @@ namespace AchieveItSystemUI
                 CurrentDateTime = DateTime.Now;
             };
             timer.Start();
+            TomatoClockCommand = new CommandBase((o) =>
+            {
+                TomatoClockFunc(o);
+            });
+
+        }
+        public void TomatoClockFunc(object o)
+        {
+            PomodoroWindow pomodoroWindow = new PomodoroWindow();
+            (o as Window).Close();
+            pomodoroWindow.Show();
         }
     }
 }
