@@ -26,6 +26,7 @@ namespace AchieveItSystemUI
             set { _currentDateTime = value; this.RaisePropertyChanged(); }
         }
         public CommandBase TomatoClockCommand { get; set; }
+        public CommandBase TossCoinCommand { get; set; }
         public PortalWindowViewModel()
         {
             //时间显示
@@ -43,6 +44,7 @@ namespace AchieveItSystemUI
             {
                 TomatoClockFunc(o);
             });
+            TossCoinCommand = new CommandBase(TossCoinFunc);
 
         }
         public void TomatoClockFunc(object o)
@@ -50,6 +52,12 @@ namespace AchieveItSystemUI
             PomodoroWindow pomodoroWindow = new PomodoroWindow();
             (o as Window).Close();
             pomodoroWindow.Show();
+        }
+        public void TossCoinFunc(object o)
+        {
+            CoinWindow coinWindow = new CoinWindow();
+            (o as Window).Close();
+            coinWindow.Show();
         }
     }
 }
