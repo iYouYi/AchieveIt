@@ -27,6 +27,7 @@ namespace AchieveItSystemUI
         }
         public CommandBase TomatoClockCommand { get; set; }
         public CommandBase TossCoinCommand { get; set; }
+        public CommandBase FocusModeCommand { get;set; }
         public PortalWindowViewModel()
         {
             //时间显示
@@ -45,6 +46,7 @@ namespace AchieveItSystemUI
                 TomatoClockFunc(o);
             });
             TossCoinCommand = new CommandBase(TossCoinFunc);
+            FocusModeCommand = new CommandBase(FocusModeFunc);
 
         }
         public void TomatoClockFunc(object o)
@@ -58,6 +60,12 @@ namespace AchieveItSystemUI
             CoinWindow coinWindow = new CoinWindow();
             (o as Window).Close();
             coinWindow.Show();
+        }
+        public void FocusModeFunc(object o)
+        {
+            FocusWindow focusWindow = new FocusWindow();
+            (o as Window).Close();
+            focusWindow.Show();
         }
     }
 }

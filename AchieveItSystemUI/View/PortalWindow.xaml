@@ -93,7 +93,7 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding FocusModeCommand}">
+                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding FocusModeCommand}" CommandParameter="{Binding ElementName=Portal}">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="/AchieveItSystemUI;component/icon/FocusMode.png" Width="100" Height="100" Stretch="Uniform"/>
                             <TextBlock Text="专注模式" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
