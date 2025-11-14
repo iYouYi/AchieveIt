@@ -76,7 +76,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
-                <Button Style="{StaticResource TargetButtonStyle}" Command="{Binding TargetCommand}">
+                <Button Style="{StaticResource TargetButtonStyle}" Command="{Binding TargetCommand}" CommandParameter="{Binding ElementName=Portal}">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Image Source="/AchieveItSystemUI;component/icon/target.png" Width="128" Height="128" Stretch="Uniform"/>
                         <TextBlock Text="目标" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
@@ -85,7 +85,7 @@
             </Grid>
 
             <Grid Grid.Column="1">
-                <UniformGrid Columns="2" Rows="2" Margin="20">
+                <UniformGrid Columns="3" Rows="1" Margin="20">
                     <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding TomatoClockCommand}" CommandParameter="{Binding ElementName=Portal}">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="/AchieveItSystemUI;component/icon/AlarmClock.png" Width="100" Height="100" Stretch="Uniform"/>
@@ -97,13 +97,6 @@
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="/AchieveItSystemUI;component/icon/FocusMode.png" Width="100" Height="100" Stretch="Uniform"/>
                             <TextBlock Text="专注模式" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
-                        </StackPanel>
-                    </Button>
-
-                    <Button Style="{StaticResource ImageButtonStyle}" Command="{Binding CheckInCommand}">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image Source="/AchieveItSystemUI;component/icon/CheckIn.png" Width="100" Height="100" Stretch="Uniform"/>
-                            <TextBlock Text="打卡" HorizontalAlignment="Center" FontSize="16" Foreground="#333333" Margin="0,5,0,0"/>
                         </StackPanel>
                     </Button>
 
