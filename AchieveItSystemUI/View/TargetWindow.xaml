@@ -123,13 +123,13 @@
             <Label Grid.Row="0" Grid.Column="0" Content="任务日期：" VerticalAlignment="Center" 
                    HorizontalAlignment="Right" FontSize="16" Margin="0,0,10,0"/>
             <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTaskDetail.日期}" 
-                     IsReadOnly="True" Height="40" VerticalContentAlignment="Center" 
+                     IsReadOnly="False" Height="40" VerticalContentAlignment="Center" 
                      FontSize="16" Margin="0,0,20,0"/>
 
             <Label Grid.Row="0" Grid.Column="2" Content="核心主题：" VerticalAlignment="Center" 
                    HorizontalAlignment="Right" FontSize="16" Margin="0,0,10,0"/>
             <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding SelectedTaskDetail.核心主题}" 
-                     IsReadOnly="True" Height="40" VerticalContentAlignment="Center" 
+                     IsReadOnly="False" Height="40" VerticalContentAlignment="Center" 
                      FontSize="16" Margin="0,0,20,0"/>
 
             <Button Grid.Row="0" Grid.Column="4" Content="提交修改" Width="120" Height="40" 
@@ -139,7 +139,7 @@
             <Label Grid.Row="1" Grid.Column="0" Content="具体任务：" VerticalAlignment="Center" 
                    HorizontalAlignment="Right" FontSize="16" Margin="0,10,10,0"/>
             <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding SelectedTaskDetail.具体任务}" 
-                     IsReadOnly="True" Height="80" VerticalContentAlignment="Top" FontSize="16" 
+                     IsReadOnly="False" Height="80" VerticalContentAlignment="Top" FontSize="16" 
                      Margin="0,10,0,0" TextWrapping="Wrap" AcceptsReturn="True" 
                      ScrollViewer.VerticalScrollBarVisibility="Auto"/>
 
@@ -158,13 +158,13 @@
             <Label Grid.Row="3" Grid.Column="0" Content="完成日期：" VerticalAlignment="Center" 
                    HorizontalAlignment="Right" FontSize="16" Margin="0,10,10,0"/>
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedTaskDetail.完成日期}" 
-                     IsReadOnly="True" Height="40" VerticalContentAlignment="Center" 
+                     IsReadOnly="False" Height="40" VerticalContentAlignment="Center" 
                      FontSize="16" Margin="0,10,20,0"/>
 
             <Label Grid.Row="3" Grid.Column="2" Content="是否逾期：" VerticalAlignment="Center" 
                    HorizontalAlignment="Right" FontSize="16" Margin="0,10,10,0"/>
             <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding SelectedTaskDetail.是否逾期}" 
-                     IsReadOnly="True" Height="40" VerticalContentAlignment="Center" 
+                     IsReadOnly="False" Height="40" VerticalContentAlignment="Center" 
                      FontSize="16" Margin="0,10,0,0"/>
         </Grid>
     </Grid>
