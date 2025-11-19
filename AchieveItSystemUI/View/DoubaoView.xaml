@@ -1,0 +1,53 @@
+﻿<Window x:Class="AchieveItSystemUI.View.DoubaoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AchieveItSystemUI.View"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:vm="clr-namespace:AchieveItSystemUI.ViewModels"
+        mc:Ignorable="d"
+        Title="豆包" Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        x:Name="Coinwindow">
+    <Window.DataContext>
+        <vm:DoubaoViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="9.5*"/>
+        </Grid.RowDefinitions>
+        
+        <Button Command="{Binding BackPortalCommand}" CommandParameter="{Binding ElementName=Coinwindow}" 
+                Margin="0,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                Width="40" Height="40" Background="Transparent" BorderThickness="0"
+                Grid.Row="0">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="Transparent" BorderThickness="0">
+                        <TextBlock 
+                            FontFamily="{StaticResource SymbolThemeFontFamily}" 
+                            Text="&#xE72B;"
+                            FontSize="20" 
+                            Foreground="Black" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <wv2:WebView2 x:Name="DoubaoWebView" Margin="0,0,0,3" AllowDrop="True"
+                      Source="{Binding WebViewSource}"
+                      CoreWebView2InitializationCompleted="DoubaoWebView_CoreWebView2InitializationCompleted"
+                      DragEnter="DoubaoWebView_DragEnter" 
+                      Drop="DoubaoWebView_Drop" Grid.Row="1"/>
+
+        <ProgressBar x:Name="ProgressBar" Height="3" VerticalAlignment="Bottom"
+                     Visibility="{Binding ProgressVisibility}"
+                     Value="{Binding ProgressValue}"
+                     Foreground="#2196F3"/>
+    </Grid>
+</Window>

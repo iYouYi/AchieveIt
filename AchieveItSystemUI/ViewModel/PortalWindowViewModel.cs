@@ -29,6 +29,8 @@ namespace AchieveItSystemUI
         public CommandBase TossCoinCommand { get; set; }
         public CommandBase FocusModeCommand { get;set; }
         public CommandBase TargetCommand { get;set; }
+        public CommandBase DoubaoCommand { get;set; }
+
         
         public PortalWindowViewModel()
         {
@@ -50,9 +52,15 @@ namespace AchieveItSystemUI
             TossCoinCommand = new CommandBase(TossCoinFunc);
             FocusModeCommand = new CommandBase(FocusModeFunc);
             TargetCommand = new CommandBase(TargetFunc);
+            DoubaoCommand = new CommandBase(DoubaoFunc);
 
         }
-
+        private void DoubaoFunc(object o)
+        {
+            DoubaoView doubaoView = new DoubaoView();
+            (o as Window).Close();
+            doubaoView.Show();
+        }
         private void TargetFunc(object o)
         {
             TargetWindow targetWindow = new TargetWindow();
